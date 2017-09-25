@@ -15,6 +15,7 @@
 const Image = require('Image');
 const React = require('React');
 const View = require('View');
+const StyleSheet = require('StyleSheet')
 
 /**
  * Very simple drop-in replacement for <Image> which supports nesting views.
@@ -42,25 +43,27 @@ const View = require('View');
  */
 class ImageBackground extends React.Component {
   render() {
-    const {children, style, imageStyle, imageRef, ...props} = this.props;
+    const {children, style, imageStyle, contentStyle, imageRef, ...props} = this.props;
 
     return (
       <View style={style}>
         <Image
           {...props}
           style={[
-            {
-              position: 'absolute',
-              left: 0,
-              right: 0,
-              top: 0,
-              bottom: 0,
-            },
+            // {
+            //   position: 'absolute',
+            //   left: 0,
+            //   right: 0,
+            //   top: 0,
+            //   bottom: 0,
+            // },
             imageStyle,
           ]}
           ref={imageRef}
         />
-        {children}
+          <View style={[StyleSheet.absoluteFill, contentStyle]}>
+              {children}
+          </View>
       </View>
     );
   }
