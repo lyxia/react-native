@@ -218,7 +218,7 @@ const Text = createReactClass({
   getDefaultProps(): Object {
     return {
       accessible: true,
-      allowFontScaling: true,
+      allowFontScaling: false,
       ellipsizeMode: 'tail',
       disabled: false,
     };
